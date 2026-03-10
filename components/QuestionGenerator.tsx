@@ -99,14 +99,21 @@ export default function QuestionGenerator() {
              exemplosContexto += `Formato de estilo CESPE: AFIRMAÇÃO para ser julgada Certa ou Errada. (Mas adapte para a lógica de Múltipla Escolha a seguir).\n`;
           }
         });
-        exemplosContexto += `\nATENÇÃO: Use esses exemplos APENAS como INSPIRAÇÃO DE ESTILO E PROFUNDIDADE. As suas 5 novas questões devem ser 100% INÉDITAS.\n`;
+        exemplosContexto += `\nATENÇÃO MÁXIMA: Os exemplos acima servem APENAS para você absorver a IDENTIDADE, o NÍVEL DE APRENDIZADO, a COMPLEXIDADE e a FORMA de construir a alternativa ou frase da banca.\n`;
+        exemplosContexto += `É ESTRITAMENTE PROIBIDO copiar as perguntas ou usar os exatos mesmos problemas.\n`;
       }
 
       const prompt = `
-Você é um especialista em elaboração de questões de matemática para concursos públicos no Brasil.
-Sua tarefa é criar 5 questões INÉDITAS, ORIGINAIS e SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com altíssima fidelidade o estilo da banca "${banca}".
+Você é um especialista altamente criativo em elaboração de questões de matemática para concursos públicos no Brasil.
+Sua tarefa é criar 5 questões INÉDITAS, ORIGINAIS, COM CONTEXTOS SITUACIONAIS DIFERENTES E ABSOLUTAMENTE SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com altíssima fidelidade o estilo da banca "${banca}".
 ${exemplosContexto}
 
+Regras INEGOCIÁVEIS de Ineditismo e Variedade:
+1. NUNCA crie duas questões com a mesma "historinha" ou usando os mesmos nomes, produtos ou cenários.
+2. Cada questão deve abordar um problema de um ângulo totalmente diferente. Se o tema for "Porcentagem", a questão 1 pode ser sobre comércio, a 2 sobre salários, a 3 sobre crescimento populacional, etc.
+3. Não use blocos de texto repetitivos e chatos. Brinque com os enunciados (alguns diretos, outros situacionais longos).
+4. Crie 5 questões completamente novas. Não copie questões reais existentes, crie do absoluto zero imitando apenas o modelo cognitivo da banca.
+        
 Regras de estilo por banca:
 - Cebraspe (CESPE): questões mais analíticas, contextualizadas, muitas vezes com interpretação e raciocínio matemático mais lógico.
 - FGV: questões com pegadinhas elegantes, lógica apurada, enunciados técnicos e abordagem refinada.
