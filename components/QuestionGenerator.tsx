@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { GoogleGenAI, Type } from '@google/genai';
 import { Loader2, CheckCircle2, ChevronDown, RefreshCw, Download, Clock, Target, XCircle } from 'lucide-react';
 import { jsPDF } from 'jspdf';
+import { bancasExamples } from '../lib/bancasExamples';
 
 const BANCAS = ['Cebraspe (CESPE)', 'FGV', 'VUNESP', 'FCC', 'ESAF', 'IBFC', 'AOCP'];
 const TEMAS = [
@@ -81,9 +82,30 @@ export default function QuestionGenerator() {
         ? 'diversos temas de matemática e raciocínio lógico comuns em concursos' 
         : `o tema "${tema}"`;
 
+      let exemplosContexto = '';
+      const questoesDaBanca = bancasExamples[banca];
+      if (questoesDaBanca && questoesDaBanca.length > 0) {
+        // Seleciona até 3 questões de exemplo aleatoriamente
+        const exemplosEmbaralhados = [...questoesDaBanca].sort(() => 0.5 - Math.random());
+        const quantiaExemplos = Math.min(3, exemplosEmbaralhados.length);
+        const exemplosEscolhidos = exemplosEmbaralhados.slice(0, quantiaExemplos);
+        
+        exemplosContexto = `\nPara garantir EXATAMENTE a sensação e a linguagem dessa banca, baseie-se fortemente no formato, originalidade e complexidade das seguintes questões reais de exemplo:\n`;
+        exemplosEscolhidos.forEach((ex, i) => {
+          exemplosContexto += `\n[Exemplo ${i + 1} de estilo da Banca ${banca}]\nEnunciado: ${ex.enunciado}\n`;
+          if (ex.alternativas) {
+             exemplosContexto += `Gabarito da banca: Alternativa ${ex.gabarito}\n`;
+          } else if (ex.gabarito === 'CERTO' || ex.gabarito === 'ERRADO') {
+             exemplosContexto += `Formato de estilo CESPE: AFIRMAÇÃO para ser julgada Certa ou Errada. (Mas adapte para a lógica de Múltipla Escolha a seguir).\n`;
+          }
+        });
+        exemplosContexto += `\nATENÇÃO: Use esses exemplos APENAS como INSPIRAÇÃO DE ESTILO E PROFUNDIDADE. As suas 5 novas questões devem ser 100% INÉDITAS.\n`;
+      }
+
       const prompt = `
 Você é um especialista em elaboração de questões de matemática para concursos públicos no Brasil.
-Sua tarefa é criar 5 questões INÉDITAS, ORIGINAIS e SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com alta fidelidade o estilo da banca "${banca}".
+Sua tarefa é criar 5 questões INÉDITAS, ORIGINAIS e SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com altíssima fidelidade o estilo da banca "${banca}".
+${exemplosContexto}
 
 Regras de estilo por banca:
 - Cebraspe (CESPE): questões mais analíticas, contextualizadas, muitas vezes com interpretação e raciocínio matemático mais lógico.
@@ -104,7 +126,8 @@ ${isLoadMore ? '6. IMPORTANTE: Gere questões diferentes das que você normalmen
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {
-          temperature: 0.7,
+          temperature: 0.6,
+          topK: 40,
           responseMimeType: 'application/json',
           responseSchema: {
             type: Type.ARRAY,
