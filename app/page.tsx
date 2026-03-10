@@ -1,5 +1,5 @@
 import QuestionGenerator from '@/components/QuestionGenerator';
-import { BookOpenCheck } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -12,12 +12,14 @@ export default function Home() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-indigo-100 rounded-2xl mb-6 shadow-sm">
-            <BookOpenCheck className="w-8 h-8 text-indigo-600" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-            Questões <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Infinitas</span>
-          </h1>
+          <Image
+            src="/logo.png"
+            alt="Questões Infinitas - Matemática"
+            width={400}
+            height={150}
+            className="mx-auto mb-6 object-contain"
+            priority
+          />
           <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
             Gere questões inéditas de matemática para concursos públicos.
             Escolha a banca, o tema e o nível de dificuldade para praticar sem limites.
