@@ -110,8 +110,8 @@ ${exemplosContexto}
 
 Regras INEGOCIÁVEIS de Ineditismo e Variedade:
 1. NUNCA crie duas questões com a mesma "historinha" ou usando os mesmos nomes, produtos ou cenários.
-2. Cada questão deve abordar um problema de um ângulo totalmente diferente. Se o tema for "Porcentagem", a questão 1 pode ser sobre comércio, a 2 sobre salários, a 3 sobre crescimento populacional, etc.
-3. Não use blocos de texto repetitivos e chatos. Brinque com os enunciados (alguns diretos, outros situacionais longos).
+2. Cada questão deve abordar um problema de um ângulo totalmente diferente. Se o tema for "Porcentagem", a questão 1 pode ser sobre comércio, a 2 sobre salários, a 3 sobre demografia, etc.
+3. CRIE TEXTOS E ENUNCIADOS LONGOS, COMO SÃO HOJE NAS PROVAS MODERNAS! Contextualize o problema, conte uma história situacional, coloque as variáveis no meio de uma narrativa técnica ou cotidiana, adicione distratores ou informações reais da sociedade/economia/governo. Fuja da "questão de uma linha apenas".
 4. Crie 5 questões completamente novas. Não copie questões reais existentes, crie do absoluto zero imitando apenas o modelo cognitivo da banca.
         
 Regras de estilo por banca:
