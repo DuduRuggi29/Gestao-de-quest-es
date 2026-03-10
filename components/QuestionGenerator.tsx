@@ -19,6 +19,7 @@ const TEMAS = [
   'Geometria',
   'Trigonometria',
   'Lógica Matemática',
+  'Raciocínio Lógico',
 ];
 const NIVEIS = ['Fácil', 'Médio', 'Difícil'];
 
@@ -82,7 +83,7 @@ export default function QuestionGenerator() {
 
       const prompt = `
 Você é um especialista em elaboração de questões de matemática para concursos públicos no Brasil.
-Sua tarefa é criar 10 questões INÉDITAS, ORIGINAIS e SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com alta fidelidade o estilo da banca "${banca}".
+Sua tarefa é criar 5 questões INÉDITAS, ORIGINAIS e SEM REPETIÇÃO sobre ${temaText}, no nível de dificuldade "${nivel}", simulando com alta fidelidade o estilo da banca "${banca}".
 
 Regras de estilo por banca:
 - Cebraspe (CESPE): questões mais analíticas, contextualizadas, muitas vezes com interpretação e raciocínio matemático mais lógico.
@@ -91,7 +92,7 @@ Regras de estilo por banca:
 - Outras bancas: siga seus padrões mais comuns.
 
 Instruções rigorosas:
-1. Crie 10 questões completamente novas. Não copie questões reais existentes.
+1. Crie 5 questões completamente novas. Não copie questões reais existentes.
 2. Cada questão deve ter um enunciado claro e 5 alternativas (A, B, C, D, E).
 3. Apenas UMA alternativa deve estar correta.
 4. Forneça uma explicação curta e objetiva da resolução.
@@ -100,7 +101,7 @@ ${isLoadMore ? '6. IMPORTANTE: Gere questões diferentes das que você normalmen
 `;
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-1.5-flash',
         contents: prompt,
         config: {
           temperature: 0.7,
