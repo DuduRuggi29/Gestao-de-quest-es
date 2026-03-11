@@ -15,8 +15,8 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="Questões Infinitas - Matemática"
-            width={180}
-            height={60}
+            width={380}
+            height={130}
             className="mx-auto mb-8 object-contain mix-blend-multiply"
             priority
           />
